@@ -6,35 +6,85 @@
     <body>
         <div id="page-container">
             <main id="main-doc">
-                <section class="main-section" id="">
+                <section class="main-section" id="Introduction">
                     <header>
                         <h2>Introduction</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ullam sapiente eaque minima, ea, voluptatibus laboriosam harum deleniti doloremque sequi eligendi odio commodi repudiandae libero voluptatum dolorum ratione exercitationem iste!</p>
                     </header>
+                    <p>As I'm already familiar with Javascript and eager to dive into React, I've taken this project as an opportunity to outline some beginner React concepts.</p>
+                    <p>But first, what is React? On <a href="https://reactjs.org/">React's official site</a>, it is described simply as a "JavaScript library for building user interfaces." In other words, React is concerned with rendering data to the DOM and updating that data as necessary, based on user interaction.</p>
+                    <p>React highlights three qualities of their library on their homepage, quoted here:</p>
+                    <ul>
+                        <li><strong>Declarative</strong>: "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable and easier to debug."</li>
+                        <li><strong>Component-Based</strong>: "Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM."</li>
+                        <li><strong>Learn Once, Write Anywhere</strong>: "We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using React Native."</li>
+                    </ul>
                 </section>
-                <section class="main-section" id="">
+                <section class="main-section" id="Hello_World">
                     <header>
-                        <h2>Second Section</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ullam sapiente eaque minima, ea, voluptatibus laboriosam harum deleniti doloremque sequi eligendi odio commodi repudiandae libero voluptatum dolorum ratione exercitationem iste!</p>
+                        <h2>Hello World</h2>
                     </header>
+                    <p>What better place to start than "Hello World"? Here's the code:</p>
+                    <div class="code-container">
+                        <pre>
+                            <code>
+                                ReactDOM.render(
+                                    &lt;h1&gtHello, world!&lt;/h1&gt,
+                                    document.getElementById('root')
+                                );
+                            </code>
+                        </pre>
+                    </div>
+                    <p>As you might guess, this simply displays a heading that reads "Hello, world!"</p>
                 </section>
-                <section class="main-section" id="">
+                <section class="main-section" id="JSX">
                     <header>
-                        <h2>Third Section</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ullam sapiente eaque minima, ea, voluptatibus laboriosam harum deleniti doloremque sequi eligendi odio commodi repudiandae libero voluptatum dolorum ratione exercitationem iste!</p>
+                        <h2>JSX</h2>
                     </header>
+                    <p>In the second line of our example above, you can see the code <code>&lt;h1&gtHello, world!&lt;/h1&gt</code>.</p>
+                    <p>It looks just like html, but it's actually JSX, which React describes as a "syntax extension" to Javascript.</p>
+                    <p>Why is JSX used? The creators of React decided it doesn't make sense to separate markup and logic, since these are naturally presented together.</p>
+                    <p>For example, what if we wanted to say hello to a specific person based on some logic? We could instead create a line of JSX like this, essentially including a variable: <code>&lt;h1&gtHello, <strong>{name}</strong>&lt;/h1&gt</code>.</p>
+                    <p>In fact, you can put any valid Javascript expression in JSX, so long as it is inside curly braces.</p>
                 </section>
-                <section class="main-section" id="">
+                <section class="main-section" id="Rendering_Elements">
                     <header>
-                        <h2>Fourth Section</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ullam sapiente eaque minima, ea, voluptatibus laboriosam harum deleniti doloremque sequi eligendi odio commodi repudiandae libero voluptatum dolorum ratione exercitationem iste!</p>
+                        <h2>Rendering Elements</h2>
                     </header>
+                    <p>Now let's look at the first line of our "Hello World" example (<code>ReactDOM.render</code>) to begin understanding how rendering works. Rendering is, unsurprisingly, done with the <code>render()</code> function. The first argument or <em>element</em> is what we want to render, and the second is where we want to render it. Specifically, this is rendering to the element with the #root ID.</p>
+                    <p>Here are two important things to note about rendering:</p>
+                    <ul>
+                        <li>React elements are immutable. If you want to update the UI, you must crate a new element and render it.</li>
+                        <li>React only updates what is needed by comparing the new element to the previous one.</li>
+                    </ul>
                 </section>
-                <section class="main-section" id="">
+                <section class="main-section" id="Components_and_Props">
                     <header>
-                        <h2>Fifth Section</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ullam sapiente eaque minima, ea, voluptatibus laboriosam harum deleniti doloremque sequi eligendi odio commodi repudiandae libero voluptatum dolorum ratione exercitationem iste!</p>
+                        <h2>Components and Props</h2>
                     </header>
+                    <p>In React, a <em>component</em> is essentially a Javascript function, which takes <em>props</em> as arguments. Here is an example that renders "Hello, Sara" to the DOM:</p>
+                    <div class="code-container">
+                        <pre>
+                            <code>
+                                function Welcome(props) {
+                                    return &lt;h1&gtHello, {props.name}&lt;/h1&gt;
+                                }
+                                    
+                                const element = &lt;Welcome name="Sara" /&gt;
+                                ReactDOM.render(
+                                    element,
+                                    document.getElementById('root')
+                                );
+                            </code>
+                        </pre>
+                    </div>
+                    <p>The first chunk of code is our Welcome component, which returns some JSX that includes an expression from the props received. But what exactly is going on with <code>props.name</code>? Where is the name coming from? As you can see in the next line defining the constant element, the name is defined with the string "Sara". You can have multiple props with any variable names you choose.</p>
+                    <p>The rest of this example is familiar territory, rendering the element to the #root.</p>
+                </section>
+                <section class="main-section" id="Conclusion">
+                    <header>
+                        <h2>Conclusion</h2>
+                    </header>
+                    <p>This has been an extremely brief introduction to React. I learned a good amount making it, and I hope you enjoyed reading it!</p>
                 </section>
             </main>
             <nav id="navbar">
@@ -42,11 +92,12 @@
                     <h1>React Introduction</h1>
                 </header>
                 <div id="nav-links-container">
-                    <a class="nav-link blahblah" href="#">Introduction</a>
-                    <a class="nav-link" href="#">Second Section</a>
-                    <a class="nav-link" href="#">Third Section</a>
-                    <a class="nav-link" href="#">Fourth Section</a>
-                    <a class="nav-link" href="#">Fifth Section</a>
+                    <a class="nav-link" href="#Introduction">Introduction</a>
+                    <a class="nav-link" href="#Hello_World">Hello World</a>
+                    <a class="nav-link" href="#JSX">JSX</a>
+                    <a class="nav-link" href="#Rendering_Elements">Rendering Elements</a>
+                    <a class="nav-link" href="#Components_and_Props">Components and Props</a>
+                    <a class="nav-link" href="#Conclusion">Conclusion</a>
                 </div>
             </nav>
 

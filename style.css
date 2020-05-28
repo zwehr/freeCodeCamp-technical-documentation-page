@@ -31,14 +31,17 @@ h2 {
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #333;
     border-bottom: 2px solid #aaa;
-    padding: 5px;
+    padding: 10px;
     font-size: 20px;
 }
 
-.nav-link:hover {
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
     color: #04427c;
 }
 
@@ -47,6 +50,20 @@ h2 {
     margin: 15px;
 }
 
+.main-section {
+    margin-bottom: 30px;
+}
+
 p {
     margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-left: 50px;
+}
+
+.code-container {
+    margin-left: -200px;
+    font-size: 16px;
 }
